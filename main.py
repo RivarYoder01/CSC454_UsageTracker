@@ -25,7 +25,7 @@ def display_led():
     root = tk.Tk()
     root.title("CPU LED MONITOR")
 
-    canvas = tk.Canvas(root, width=80, height=80)
+    canvas = tk.Canvas(root, width=400, height=80)
     canvas.pack()
 
     led = canvas.create_oval(10, 10, 70, 70, fill="gray", outline="black", width=2)
