@@ -41,7 +41,7 @@ def display_led():
 
     led = canvas.create_oval(x0, y0, x1, y1, fill="gray", outline="black", width=2)
 
-    alert_label = tk.Label(root, text="CPU Usage: ", font=("Arial", 16))
+    alert_label = tk.Label(root, text="CPU Usage: ", font=("Arial", 12))
     alert_label.pack(pady=10)
 
     button = tk.Button(root, text="Exit", command=root.quit)
@@ -52,10 +52,12 @@ def alert_system(usage):
 
     :return:
     """
-    if usage > 90:
-        alert_label.config(text=f"CPU Usage: {usage}%", fg="red")
+    if usage < 50:
+        alert_label.config(text=f"Everything is calm ^.^ CPU Usage: {usage}%", fg="black")
+    elif usage < 80:
+        alert_label.config(text=f"Things are picking up ._. CPU Usage: {usage}%", fg="black")
     else:
-        alert_label.config(text=f"CPU Usage: {usage}%", fg="black")
+        alert_label.config(text=f"HIGH USAGE .0. CPU Usage: {usage}%", fg="red")
 
     return
 
