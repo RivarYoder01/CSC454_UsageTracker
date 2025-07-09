@@ -16,6 +16,16 @@ root = None
 canvas = None
 led = None
 
+
+def find_cpu_usage():
+    """
+
+    :return: float
+    """
+
+    return psutil.cpu_percent(interval=0.1)
+
+
 def display_led():
     """
 
@@ -35,10 +45,8 @@ def main():
     """
     """
     display_led()
+    find_cpu_usage()
     root.mainloop()
-    # while True:
-        # cpu_percent = psutil.cpu_percent(interval=1)
-        # print(f"Current CPU usage: {cpu_percent}%")
 
 if __name__ == "__main__":
     main()
