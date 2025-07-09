@@ -17,15 +17,6 @@ canvas = None
 led = None
 
 
-def find_cpu_usage():
-    """
-
-    :return: float
-    """
-
-    return psutil.cpu_percent(interval=0.1)
-
-
 def display_led():
     """
 
@@ -41,11 +32,27 @@ def display_led():
     led = canvas.create_oval(10, 10, 70, 70, fill="gray", outline="black", width=2)
 
 
+
+def update_led():
+    usage = psutil.cpu_percent(interval=1)
+    print(usage)
+
+    if usage < 50:
+        color = "green"
+    elif usage < 80:
+        color = "yellow"
+    else:
+        color = "red"
+
+    canvas.itemconfig(led, fill=color)
+    root.after(1000, update_led)  # Update every second
+
+
 def main():
     """
     """
     display_led()
-    find_cpu_usage()
+    update_led()
     root.mainloop()
 
 if __name__ == "__main__":
